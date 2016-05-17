@@ -68,7 +68,12 @@
                                 <echo message="download archive" />
                                 <get src="${upstream.url}" dest="${project.build.directory}/${project.artifactId}.zip" />
                                 <echo message="unzip archive" />
-                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}" />
+                                <unzip src="${project.build.directory}/${project.artifactId}.zip" dest="${project.build.directory}">
+                                  <fileset dir="iconfont">
+									<include name="MaterialIcons*"/>
+									<include name="*.css"/>
+								  </fileset>
+                                </unzip>
                                 <echo message="moving resources" />
                                 <move todir="${destDir}">
                                     <fileset dir="${project.build.directory}/${project.artifactId}-${upstream.version}" />
